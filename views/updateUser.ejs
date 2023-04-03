@@ -1,0 +1,59 @@
+
+
+<h1> Create your user</h1>
+
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="/users">Users</a> </li>
+    <li class="breadcrumb-item active">Create User</li>
+   
+  </ol>
+</nav>
+
+
+<% if(infoSubmitObj != '') { %>
+  <div class="col-8 alert alert-success" role="alert">
+    <%= infoSubmitObj %>
+  </div>
+<% } %>
+
+<% if(infoErrorsObj != '') { %>
+  <div class="col-8 alert alert-danger" role="alert">
+    <%= infoErrorsObj[0].message %>
+  </div>
+<% } %>
+
+
+
+<form method="POST" action="/updateUser" enctype="multipart/form-data"> <!--multipart for images -->
+  <% if(user != '') { %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" class="form-control" id="contrasena" name="contrasena" value="<%= user.contrasena %>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nombre">Nombre Completo</label>
+      <input type="text" class="form-control" id="nombre" name="nombre"value="<%= user.nombre %>" >
+    </div>
+    <div class="form-group">
+      <label for="cedula">Cedula</label>
+      <input type="text" class="form-control" id="cedula" name="cedula" value="<%= user.cedula %>">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Telefono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" value="<%= user.telefono %>">
+      </div>  
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <% }%>
+  </form>

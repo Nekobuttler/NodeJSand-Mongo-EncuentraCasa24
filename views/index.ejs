@@ -1,48 +1,83 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  </head>
-  <body>
-    <form method ="POST" action="/crear">
-        <div class="mb-3">
-          <label for="casaTipo" class="form-label">Tipo de  casa</label>
-          <input type="text" class="form-control" id="casaTipo" aria-describedby="emailHelp">
-         
-        </div>
-        <div class="mb-3">
-          <label for="cuartos" class="form-label">Cuartos</label>
-          <input type="number" class="form-control" id="cuartos">
-        </div>
-    
-        <input type="submit" class="btn btn-primary">Submit</button>
-      </form>
 
-      <table class="table">
+
+
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+    <div class="col-12 col-lg-6">
+        <img src="" alt="">
+
+    </div>
+    <div class="col-12 col-lg-6">
+
+        <h1 class="display-5 fw-bold mb-3">
+            Our houses 
+        </h1>
+
+        <p>
+            Explore the houses we have for you
+        </p>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+
+            <a href="/explore-latest" class="btn btn-primary btn dark btn-lg px-4 me-md-4">Latest added houses</a>
+            <a href="/random" class="btn btn-primary btn dark btn-lg px-4 me-md-4">Random house</a>
+            <a href="/popular" class="btn btn-primary btn dark btn-lg px-4 me-md-4">Most seen houses</a>
+        </div>
+    </div>
+
+</div>
+
+
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+            <a href="#" class="col text-center category__link">
+                Apartments
+            </a>
+            <a href="#" class="col text-center category__link">
+                Condos
+            </a>
+            <a href="#" class="col text-center category__link">
+                Sell houses 
+            </a>
+            <a href="#" class="col text-center category__link">
+                Rent houses 
+            </a>
+    </div>
+
+    
+    <table class="table">
         <thead>
           <tr>
             <th >ID</th>
-            <th >Tipo Departamento</th>
+            <th >Nombre</th>
+            <th >Tamaño</th>
+            <th >Tipo</th>
             <th >Cuartos</th>
+            <th >Baños</th>
+            
             
           </tr>
         </thead>
         <tbody>
-         <% casas.forEach ( (casa) => {
-            %>
-            <tr> 
-                <td> <%= casa._id  %> </td>
-                <td> <%= casa.tamano  %> </td>
-                <td> <%= casa.tipo  %> </td>
-                <td> <%= casa.cuartos  %> </td>
-                <td> <%= casa.banos  %> </td>
-            </tr>
-         } ) 
+            
+        <% if(houses != '' ) { %>
+            <% houses.forEach(function(house, index) { %>
+                <tr>
+
+                    <td> <%= house._id  %> </td>
+                    <td> <%= house.nombre  %> </td>
+                    <td> <%= house.tamano  %> </td>
+                    <td> <%= house.tipo  %> </td>
+                    <td> <%= house.cuartos  %> </td>
+                    <td> <%= house.banos  %> </td>
+                     <% }) %>
+                     <% } %>
+
+                </tr>
+                
+            
         </tbody>
       </table>
-      
-  </body>
-</html>
+
+
+
+   

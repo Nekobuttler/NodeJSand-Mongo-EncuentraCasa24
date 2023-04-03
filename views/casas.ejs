@@ -1,0 +1,63 @@
+
+<h1 class="pb-4">Explore the houses</h1>
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Explore houses</li>
+  </ol>
+</nav>
+
+
+
+<h3> <a href="/crearCasa"> Crear Casa</a> </h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th >ID</th>
+        <th >Nombre</th>
+        <th >Tamaño</th>
+        <th >Tipo</th>
+        <th >Cuartos</th>
+        <th >Baños</th>
+        <th> Caracteristicas</th>
+        <th> Actualizar</th>
+        <th> Eliminar</th>
+        <th> Ofertar</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        
+    <% if(houses != '' ) { %>
+        <% houses.forEach(function(house, index) { %>
+            <tr>
+                <td> <%= house._id  %> </td>
+                <td> <%= house.nombre  %> </td>
+                <td> <%= house.tamano  %> </td>
+                <td> <%= house.tipo  %> </td>
+                <td> <%= house.cuartos  %> </td>
+                <td> <%= house.banos  %> </td>
+                <td> <% if(house.caracteristicas != ''){ %>
+                <% house.caracteristicas.forEach( function(caracteristica) { %>
+                  
+                    <p><%= caracteristica%> </p>
+                  <% })  %> 
+                  <% }else{  %>
+                    <p><%= 'no hay caracteristicas para mostrar' %> </p>
+                    <% }%>
+                </td>
+                <td><a  class="col text-center category__link" href="/updateCasa/<%= house._id %>"> Actualizar</a> </td>
+                <td><a  class="col text-center category__link" href="/delete/<%= house._id %>"> Eliminar</a> </td>
+                <td><a  class="col text-center category__link" href="/crearOferta/<%= house._id %>"> Hacer Oferta</a> </td>
+                 <% }) %>
+                 <% } %>
+
+            </tr>
+            
+        
+    </tbody>
+  </table>

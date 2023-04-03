@@ -1,0 +1,101 @@
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="/casas">Casas</a> </li>
+      <li class="breadcrumb-item active">Actualizar Casa</li>
+     
+    </ol>
+  </nav>
+  
+  
+  <% if(infoSubmitObj != '') { %>
+    <div class="col-8 alert alert-success" role="alert">
+      <%= infoSubmitObj %>
+    </div>
+  <% } %>
+  
+  <% if(infoErrorsObj != '') { %>
+    <div class="col-8 alert alert-danger" role="alert">
+      <%= infoErrorsObj[0].message %>
+    </div>
+  <% } %>
+  
+  
+  <div class="px-4 py-5 text-center">
+    <h1 class="display fw-bold "> Actualizar casa</h1>
+    <div class="col-lg-6 mx-auto">
+      
+      <p class="lead">
+        Por favor digite las caracteristicas de su casa asi como sus imagenes ya que son 
+        relevantes para que su casa se popularice en nuestro sitio web 
+      </p>
+  
+    </div>
+  
+  </div>
+  
+  <div class="row justify-content-center">
+  
+    <div class="col-8">
+  
+      <form action="/updateCasa" method="POST" enctype="multipart/form-data">
+        <% if(casa != '') { %>
+        <div class="row g-3">
+  
+          <div class="col-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" value="<%= casa.nombre %> " class="form-control" id="nombre" name="nombre" placeholder="Nombre atractivo para tu venta">
+          </div>
+          <div class="col-12">
+            <label for="cuartos" class="form-label">Numero de cuartos de la casa:</label>
+            <input type="number" value="<%= casa.cuartos %>" class="form-control" id="cuartos" name="cuartos" placeholder="">
+            
+          </div>
+          <div class="col-12">
+            <label for="tipo" class="form-label">Tipo de casa </label>
+            <input type="text" value="<%= casa.tipo %>" class="form-control" id="tipo" name="tipo" placeholder="Tipo de casa">
+            
+          </div>
+          <div class="col-12">
+            <label for="banos" class="form-label">Numero de baños</label>
+            <input type="text" value="<%= casa.banos %>" class="form-control" id="banos" name="banos" placeholder="">
+            
+          </div>
+          <div class="col-12">
+            <label for="tamano" class="form-label">Tamaño de la casa en metros cuadrados</label>
+            <input type="number" value="<%= casa.tamano %>" class="form-control" id="tamano" name="tamano" placeholder="">
+            
+          </div>
+  
+          <div class="col-12">
+  
+            <label for="name" class="form-label">Caracteristicas de la casa</label>
+            <small> Ejemplo: Patio de 20m2</small>
+            <div class="caracteristicasList">
+              <div class="caracteristicasDiv mb-1">
+            <input type="text" name="caracteristicas" >
+          </div>
+          </div>
+          </div>
+  
+          <div class="col-12">
+            <button type="button" class="btn btn-outline-primary" id="addCaracteristicas">
+                + Caracteristica 
+            </button>
+  
+          </div>
+  
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Agregar casa</button>
+          </div>
+        </div>
+        <% }%>
+      </form>
+    </div>
+  
+  </div>
+  
+  
+  

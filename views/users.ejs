@@ -1,0 +1,58 @@
+
+<h1 class="pb-4">Explore the users</h1>
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Explore Users</li>
+  </ol>
+</nav>
+
+
+<% if(infoSubmitObj != '') { %>
+  <div class="col-8 alert alert-success" role="alert">
+    <%= infoSubmitObj %>
+  </div>
+<% } %>
+
+<% if(infoErrorsObj != '') { %>
+  <div class="col-8 alert alert-danger" role="alert">
+    <%= infoErrorsObj[0].message %>
+  </div>
+<% } %>
+
+
+<h3> <a href="/crearUser"> Crear Usuario</a> </h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th >ID</th>
+        <th >Email</th>
+        <th >Nombre</th>
+        <th >Cedula</th>
+        <th >Telefono</th>
+        <th >Contraseña</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        
+    <% if(users != '' ) { %>
+      <% users.forEach((user)=> { %>
+            <tr>
+                <td> <%= user._id  %> </td>
+                <td> <%= user.email  %> </td>
+                <td> <%= user.nombre  %> </td>
+                <td> <%= user.cedula  %> </td>
+                <td> <%= user.telefono  %> </td>
+                <td> <%= user.contrasena  %> </td>
+                <td><a  class="col text-center category__link" href="/updateUser/<%= user._id %>"> Actualizar</a> </td>
+                <td><a  class="col text-center category__link" href="/delete/<%= user._id %>"> Eliminar</a> </td>
+                 <% }) %>
+                 <% } %>
+
+            </tr>
+    </tbody>
+  </table>
